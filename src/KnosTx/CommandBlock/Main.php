@@ -22,9 +22,6 @@ class Main extends PluginBase implements Listener {
     /** @var array Data storage for command blocks */
     private array $commandBlockData = [];
 
-    /** @var Block $blockVar */
-    private Block $blockVar;
-
     /**
      * Constructor of CommandBlock
      */
