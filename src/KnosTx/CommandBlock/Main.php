@@ -26,6 +26,11 @@ class Main extends PluginBase implements Listener {
     private Block $blockVar;
 
     /**
+     * Constructor of CommandBlock
+     */
+    public function __construct(Block $blockVar){
+        $this->blockVar = $blockVar;
+    /**
      * Called when the plugin is enabled.
      */
     public function onEnable(): void {
@@ -39,7 +44,7 @@ class Main extends PluginBase implements Listener {
      */
     public function onBlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
-        $block = $block;
+        $block = $blockVar->getBlock();
 
         if ($block->getTypeId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.use")) {
