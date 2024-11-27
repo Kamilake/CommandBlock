@@ -29,7 +29,20 @@ class Main extends PluginBase implements Listener {
      * Constructor of CommandBlock
      */
     public function __construct($loader, $server, $dataFolder, $file, $resourceProvider){
-        parent::__construct();
+        $this->dataFolder = rtrim($dataFolder, "/" . DIRECTORY_SEPARATOR) . "/";
+		//TODO: this is accessed externally via reflection, not unused
+		$this->file = rtrim($file, "/" . DIRECTORY_SEPARATOR) . "/";
+		$this->resourceFolder = Path::join($this->file, "resources") . "/";
+
+		$this->configFile = Path::join($this->dataFolder, "config.yml");
+
+		$prefix = $this->description->getPrefix();
+		$this->logger = new PluginLogger($server->getLogger(), $prefix !== "" ? $prefix : $this->getName());
+		$this->scheduler = new TaskScheduler($this->getFullName());
+
+		$this->onLoad();
+
+		$this->registerYamlCommands();
         $this->blockVar = $blockVar;
     }
     /**
