@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
      */
     public function onBlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
-        $block = $event->block->getBlock();
+        $block = $event->blockAgainst->getBlock();
 
         if ($block->getId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.use")) {
@@ -95,7 +95,7 @@ class Main extends PluginBase implements Listener {
             "needsRedstone" => true
         ];
 
-        $form = new CustomForm(function (Player $player, ?array $formData) use ($block, $blockKey) {
+        $form = new CustomForm(function (Player $player, ?array $formData) use ($blockKey) {
             if ($formData === null) {
                 $player->sendMessage("§eCommand editing cancelled.");
                 return;
