@@ -30,6 +30,7 @@ class Main extends PluginBase implements Listener {
      */
     public function __construct(Block $blockVar){
         $this->blockVar = $blockVar;
+    }
     /**
      * Called when the plugin is enabled.
      */
