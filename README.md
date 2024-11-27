@@ -1,6 +1,4 @@
 # CommandBlock
-
-## Overview
 This plugin adds support for **Command Blocks** in PocketMine-MP servers. Command Blocks allow players or server administrators to run commands automatically when triggered. This plugin is designed to be easy to use while maintaining flexibility for advanced configurations.
 
 ## Features
