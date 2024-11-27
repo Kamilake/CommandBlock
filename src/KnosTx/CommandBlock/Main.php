@@ -22,6 +22,9 @@ class Main extends PluginBase implements Listener {
     /** @var array Data storage for command blocks */
     private array $commandBlockData = [];
 
+    /** @var Block $blockVar*/
+    private Block $blockVar;
+
     /**
      * Called when the plugin is enabled.
      */
@@ -36,9 +39,9 @@ class Main extends PluginBase implements Listener {
      */
     public function onBlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
-        $block = $event->blockAgainst->getBlock();
+        $block = $block;
 
-        if ($block->getId() === self::COMMAND_BLOCK_ID) {
+        if ($block->getTypeId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.use")) {
                 $player->sendMessage("§cYou do not have permission to place Command Blocks!");
                 $event->cancel();
