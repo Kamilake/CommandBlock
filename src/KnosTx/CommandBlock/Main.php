@@ -28,14 +28,7 @@ class Main extends PluginBase implements Listener {
     /**
      * Constructor of CommandBlock
      */
-    public function __construct(
-        private PluginLoader $loader,
-		private Server $server,
-		private PluginDescription $description,
-		private string $dataFolder,
-		private string $file,
-		private ResourceProvider $resourceProvider
-    ){
+    public function __construct(){
         parent::__construct();
         $this->blockVar = $blockVar;
     }
