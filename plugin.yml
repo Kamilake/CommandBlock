@@ -1,0 +1,20 @@
+name: CommandBlock
+version: 1.0.0
+api: 5.0.0
+main: KnosTx\CommandBlock\Main
+author: KnosTx
+description: Command Block implementation for PocketMine-MP.
+
+permissions:
+  commandblock.use:
+    description: Allows players to place Command Blocks.
+    default: op
+  commandblock.edit:
+    description: Allows players to edit Command Blocks.
+    default: op
+  commandblock.break:
+    description: Allows players to break Command Blocks.
+    default: op
+  commandblock.execute:
+    description: Allows players to execute commands in Command Blocks.
+    default: op
