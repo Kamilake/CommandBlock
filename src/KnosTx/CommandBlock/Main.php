@@ -36,7 +36,7 @@ class Main extends PluginBase implements Listener {
      */
     public function onBlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
-        $block = $event->getBlock();
+        $block = $event->block->getBlock();
 
         if ($block->getId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.use")) {
@@ -56,7 +56,7 @@ class Main extends PluginBase implements Listener {
     public function onBlockBreak(BlockBreakEvent $event): void {
         $block = $event->getBlock();
 
-        if ($block->getId() === self::COMMAND_BLOCK_ID) {
+        if ($block->getTypeId() === self::COMMAND_BLOCK_ID) {
             $player = $event->getPlayer();
             $this->removeCommandBlockData($block);
         }
@@ -71,7 +71,7 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $block = $event->getBlock();
 
-        if ($block->getId() === self::COMMAND_BLOCK_ID) {
+        if ($block->getTypeId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.edit")) {
                 $player->sendMessage("§cYou do not have permission to edit Command Blocks!");
                 return;
