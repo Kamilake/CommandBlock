@@ -9,42 +9,30 @@ use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\block\Block;
 use pocketmine\block\BlockTypeIds;
-use jojoe77777\FormAPI\CustomForm;
 use pocketmine\player\Player;
+use jojoe77777\FormAPI\CustomForm;
 
 /**
  * CommandBlock implementation for PocketMine-MP.
  */
 class Main extends PluginBase implements Listener {
 
-    public const COMMAND_BLOCK_ID = 77777; // Stepped so that it is not the same as the id in PocketMine.
+    public const COMMAND_BLOCK_ID = 77777;
 
     /** @var array Data storage for command blocks */
     private array $commandBlockData = [];
 
-    /** @var Block $blockVar*/
+    /** @var Block $blockVar */
     private Block $blockVar;
 
     /**
      * Constructor of CommandBlock
      */
-    public function __construct($loader, $server, $dataFolder, $file, $resourceProvider){
-        $this->dataFolder = rtrim($dataFolder, "/" . DIRECTORY_SEPARATOR) . "/";
-		//TODO: this is accessed externally via reflection, not unused
-		$this->file = rtrim($file, "/" . DIRECTORY_SEPARATOR) . "/";
-		$this->resourceFolder = Path::join($this->file, "resources") . "/";
-
-		$this->configFile = Path::join($this->dataFolder, "config.yml");
-
-		$prefix = $this->description->getPrefix();
-		$this->logger = new PluginLogger($server->getLogger(), $prefix !== "" ? $prefix : $this->getName());
-		$this->scheduler = new TaskScheduler($this->getFullName());
-
-		$this->onLoad();
-
-		$this->registerYamlCommands();
-        $this->blockVar = $blockVar;
+    public function __construct() {
+        parent::__construct();
+        // No need to pass parameters; PluginBase handles them
     }
+
     /**
      * Called when the plugin is enabled.
      */
@@ -59,7 +47,7 @@ class Main extends PluginBase implements Listener {
      */
     public function onBlockPlace(BlockPlaceEvent $event): void {
         $player = $event->getPlayer();
-        $block = $blockVar->getBlock();
+        $block = $event->getBlockPlaced();
 
         if ($block->getTypeId() === self::COMMAND_BLOCK_ID) {
             if (!$player->hasPermission("commandblock.use")) {
