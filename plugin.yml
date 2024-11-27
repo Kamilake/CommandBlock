@@ -3,7 +3,7 @@ version: 1.0.0
 api: 5.0.0
 main: KnosTx\CommandBlock\Main
 author: KnosTx
-description: Command Block implementation for PocketMine-MP.
+description: Command Block plugin implementation for PocketMine-MP.
 
 permissions:
   commandblock.use:
