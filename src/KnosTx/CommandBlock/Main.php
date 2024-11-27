@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener {
 	 */
 	public function onBlockPlace(BlockPlaceEvent $event) : void {
 		$player = $event->getPlayer();
-		$placedBlock = $event->getBlockAgaints();
+		$placedBlock = $event->getBlockAgainst();
 
 		if ($placedBlock->getTypeId() === self::COMMAND_BLOCK_ID) {
 			if (!$player->hasPermission("commandblock.use")) {
