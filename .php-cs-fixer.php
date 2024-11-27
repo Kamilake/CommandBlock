@@ -39,10 +39,13 @@ return (new PhpCsFixer\Config)
         ],
         'header_comment' => [
             'comment_type' => 'comment',
-            'header' => <<<BOD Tu
+            'header' => <<<BODY
 @license GPL-3.0
-@author KnosTx
+@author KnosTx <nurazligaming@gmail.com>
 @link https://github.com/KnosTx
+
+© Copyright 2024 KnosTx
+
 Copyright is protected by the Law of the country.
 
 BODY,
