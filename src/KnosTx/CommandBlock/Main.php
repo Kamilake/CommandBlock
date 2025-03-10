@@ -29,7 +29,7 @@ use pocketmine\plugin\PluginBase;
  */
 class Main extends PluginBase implements Listener {
 
-	public const COMMAND_BLOCK_ID = 77777;
+	public const COMMAND_BLOCK_ID = 247;
 
 	/** @var array Data storage for command blocks */
 	private array $commandBlockData = [];
